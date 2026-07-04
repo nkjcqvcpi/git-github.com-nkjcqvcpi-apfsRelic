@@ -1,0 +1,30 @@
+[package]
+name = "apfsrelic-gui"
+description = "Read-only APFS image reader — Tauri v2 desktop GUI."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "apfsrelic-gui"
+path = "src/main.rs"
+
+[features]
+# Tauri decides at compile time whether to serve the embedded `frontendDist`
+# (production) or the `devUrl` dev server: `tauri::is_dev()` is
+# `!cfg!(feature = "custom-protocol")`. Without this feature every build is
+# "dev" and loads http://localhost:1420 — a blank window unless the Vite dev
+# server is running. Build/run with `--features custom-protocol` (what
+# `tauri build` and `make gui` do) to embed and serve the built assets.
+custom-protocol = ["tauri/custom-protocol"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+apfsrelic-core = { workspace = true }
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

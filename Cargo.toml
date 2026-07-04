@@ -1,0 +1,26 @@
+# apfsRelic — Cargo workspace.
+#
+#   crates/core  (apfsrelic-core)  read-only APFS engine — dependency-free, auditable.
+#   crates/cli   (apfsrelic-cli)   the `apfsrelic` command-line binary.
+#   crates/gui   (apfsrelic-gui)   Tauri v2 desktop GUI.
+#
+# `fuzz/` is a separate workspace (needs nightly) and is intentionally excluded.
+[workspace]
+resolver = "2"
+members = ["crates/core", "crates/cli", "crates/gui"]
+exclude = ["fuzz"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.77"
+license = "GPL-3.0-or-later"
+repository = "https://github.com/apfsRelic/apfsRelic"
+
+[workspace.dependencies]
+apfsrelic-core = { path = "crates/core" }
+
+# Profiles are honored only at the workspace root.
+[profile.release]
+opt-level = 3
+lto = "thin"

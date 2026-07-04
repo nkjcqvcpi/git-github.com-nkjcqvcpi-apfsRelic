@@ -1,0 +1,15 @@
+/target
+**/*.rs.bk
+Cargo.lock.orig
+fuzz/target
+fuzz/corpus
+fuzz/artifacts
+.DS_Store
+*.lock
+
+# Tauri: generated capability schemas
+/crates/gui/gen/
+
+# Frontend (React + Vite + Carbon) build artifacts
+/frontend/node_modules/
+/frontend/dist/

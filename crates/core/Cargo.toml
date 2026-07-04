@@ -1,0 +1,18 @@
+[package]
+name = "apfsrelic-core"
+description = "Read-only, non-sudo APFS image reader — core engine (parsers, B-trees, recovery)."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[lib]
+name = "apfsrelic_core"
+path = "src/lib.rs"
+
+# Intentionally dependency-free: on-disk parsing, plist/GPT scanning and JSON
+# emission are all implemented in-tree so the read-only guarantees and
+# bounds-checking can be audited without trusting third-party crates. The
+# cargo-fuzz harness lives in `../../fuzz` (a separate workspace).
+[dependencies]

@@ -1,0 +1,16 @@
+[package]
+name = "apfsrelic-cli"
+description = "Read-only, non-sudo APFS image reader — command-line interface."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+default-run = "apfsrelic"
+
+[[bin]]
+name = "apfsrelic"
+path = "src/main.rs"
+
+[dependencies]
+apfsrelic-core = { workspace = true }
